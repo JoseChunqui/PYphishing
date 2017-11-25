@@ -1,0 +1,21 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons");
+
+// Bootstrap
+// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+//Vuetify
+@import "~vuetify/dist/vuetify.min.css";
+
+
+.mailbox-table{
+  width: 100%; position: relative;border-collapse: separate; border-spacing: 0px;
+}
+
+.mailbox-table tr{
+  background: rgba(243,243,243,.85);color: #222;
+}
+
+.mailbox-table tr td{
+  border-bottom: 1px #e5e5e5 solid;
+}
