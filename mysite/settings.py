@@ -25,7 +25,7 @@ SECRET_KEY = 'k$37ytf9974^p%8)b^&i+lwd@nk48l007!pd%a87abx%y4&*3q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '190.117.113.99', 'jchunqui.tk']
 
 
 # Application definition
