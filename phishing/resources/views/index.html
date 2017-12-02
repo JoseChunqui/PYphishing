@@ -20,10 +20,11 @@
   <body>
     <div id="app">
       <vue-navbar toolbar-image="{% static "images/toolbar.png" %}">
-        <vue-mailbox-content
+        <router-view :data-messages="{{emails}}"></router-view>
+        <!-- <vue-mailbox-content
           :data-messages="{{emails}}"
           >
-        </vue-mailbox-content>
+        </vue-mailbox-content> -->
       </vue-navbar>
     </div>
     <script src="{% static '/js/app.js' %}" charset="utf-8"></script>

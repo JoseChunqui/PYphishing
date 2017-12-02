@@ -5,21 +5,20 @@
       fixed
       clipped
       app
-      style="width: 200px;"
+      style="width: 200px; padding-right: 20px"
     >
       <v-list dense>
         <template>
           <v-list-tile style="height: 50px">
             <v-list-tile-content class="text--black">
-              <v-list-tile-title style="height: 50px">
+              <v-list-tile-title style="height: 50px; margin-left: 8px">
                 <v-btn color="error" @click="sig_visible = true">Redactar</v-btn>
-                {{sig_visible}}
               </v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </template>
         <template v-for="(item, i) in items">
-          <v-list-tile :key="i" @click="" style="height: 30px">
+          <v-list-tile :key="i" @click="" style="height: 30px; margin-left: 14px">
             <v-list-tile-content class="text--black">
               <v-list-tile-title>
                 {{ item.text }}
@@ -54,8 +53,8 @@
       </v-toolbar>
     </v-toolbar>
     <v-content style="padding: 128px 0px 0px 200px;">
-      <v-container fluid color="white" style="padding: 0px 20px;">
-        <v-layout justify-center align-center>
+      <div fluid color="white">
+        <v-layout>
           <slot></slot>
           <vue-dockmail :dock-visible.sync="sig_visible">
             <div style="overflow:hidden; height:100%">
@@ -126,7 +125,7 @@
             </div>
           </vue-dockmail>
         </v-layout>
-      </v-container>
+      </div>
     </v-content>
   </v-app>
 </template>

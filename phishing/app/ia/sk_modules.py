@@ -42,21 +42,23 @@ def train(request):
 
     return HttpResponse('Model builded')
 
-def detector(request):
+def detector(attr_array):
     data_dir = settings.BASE_DIR + "/phishing/app/ia/models/"
     # test = np.array([(0,0,1,1,273,0,37,62,0.227106227106227,0,0,1,22.1,0,0,0,0,0,1,0,0,0,0,0,22,-1,0,-0.0454545454545455,0,0,0,0,4,0,3,0,0,4,3,0,0,0,0,0,0,0,0)])
-    test = np.array([(0,0,0,0,0,0,4,0,0.190476,0,0,0)])
+    # test = np.array([(0,0,0,0,0,0,4,0,0.190476,0,0,0)])
+    test = np.array([(attr_array['bodydearword'], attr_array['bodyhtml'], attr_array['bodysuspensionword'], attr_array['externalsabinary'], attr_array['scriptonclick'], attr_array['scriptstatuschange'], attr_array['sendnumwords'], attr_array['subjectbankword'], attr_array['subjectrichness'], attr_array['subjectverifyword'], attr_array['urlnumip'], attr_array['urlnumlink'])])
+    # print attr_array
     clf = joblib.load(data_dir + 'tree_model.pkl')
     pred = clf.predict(test)
     #
-    if pred[0] == 'ham':
-        print('No es pishing')
-        # do somthing
-    else:
-        print('Es pishing')
-        # do somthing
+    # if pred[0] == 'ham':
+    #     print('No es pishing')
+    #     # do somthing
+    # else:
+    #     print('Es pishing')
+    #     # do somthing
     #
-    return HttpResponse(pred[0])
+    return pred[0]
 
 def do_nothing():
     var = 'Nothing'

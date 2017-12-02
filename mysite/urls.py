@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import include,url
 from django.contrib import admin
+from phishing.views import show
+from phishing.views import custom_login
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
+    url(r'^\Z', include('phishing.urls'), name="homepage"),
     url(r'^admin/', admin.site.urls),
-    url(r'^phishing/', include('phishing.urls')),
+    url(r'^ajax/get_email_content', show, name='show'),
+    url(r'^login/$', custom_login),
+
 ]

@@ -7,8 +7,9 @@
 window.Vue = require('vue');
 window.Vuetify = require('vuetify');
 window.VueScrollTo = require('vue-scrollto');
-
 window.VeeValidate = require('vee-validate');
+import VueRouter from 'vue-router';
+
  const config = {
   errorBagName: 'vee_errors', // change if property conflicts.
   fieldsBagName: 'fields',
@@ -35,11 +36,14 @@ window.VeeValidate = require('vee-validate');
 Vue.use(VeeValidate, config);
 Vue.use(VueScrollTo);
 Vue.use(Vuetify);
+Vue.use(VueRouter);
+
 
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('vue-navbar', require('./components/navbar.vue'));
 Vue.component('vue-dockmail', require('./components/dockmodal-gmail.vue'));
 Vue.component('vue-mailbox-content', require('./components/mailbox-content.vue'));
+Vue.component('vue-mail-content', require('./components/mail-content.vue'));
 import moment from 'moment'
 
 Vue.filter('formatDate', function(value) {
@@ -58,6 +62,17 @@ Vue.filter('formatDate', function(value) {
   }
 });
 
+//Router
+const router = new VueRouter({
+  routes: [
+    // los segmentos dinámicos comienzan con dos puntos
+    { path: '/', redirect: '/all'},
+    { path: '/all', component: require('./components/mailbox-content.vue') },
+    { path: '/all/:id', component: require('./components/mail-content.vue') },
+  ]
+});
+
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router
 });
